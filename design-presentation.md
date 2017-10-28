@@ -28,7 +28,7 @@ TODO
 
 # Design Process
 
-TODO
+We have found out from the specs of DJI Inspire 1 information
 
 ---
 
@@ -40,7 +40,7 @@ TODO
 
 # Scenario & Use cases
 
-TODO
+When one wants to find pollutions from air.
 
 ---
 
