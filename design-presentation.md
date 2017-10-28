@@ -1,7 +1,7 @@
 # ACP - Drone Sensing
 ##Applied Computing Project
 
-FIXME - names, numbers and stuff
+FIXME - Arttu Vuosku, Mauri Miettinen, Teemu Ikävalko, Valtteri Erkkilä
 
 ---
 
