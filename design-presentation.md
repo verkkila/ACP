@@ -16,7 +16,9 @@ FIXME - Arttu Vuosku, Mauri Miettinen, Teemu Ikävalko, Valtteri Erkkilä
 
 # Table of contents
 
-TODO
+Sensors
+Camera
+Remote controller
 
 ---
 
