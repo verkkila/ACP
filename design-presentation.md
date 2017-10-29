@@ -42,7 +42,9 @@ We have found out from the specs of DJI Inspire 1 information
 
 [Sensor drone for aerial odor mapping for agriculture and security services](http://ieeexplore.ieee.org/abstract/document/7561340/?reload=true) Similar project to what we are making
 
-[The eNose company](http://www.enose.nl/) Company that is specialiced in making portable and lightweight sensor applications. 
+[The eNose company](http://www.enose.nl/) Company that is specialiced in making portable and lightweight sensor applications.
+
+[Wikipedia article about enoses](https://en.wikipedia.org/wiki/Electronic_nose)
 TODO
 
 Air Sensor Guidebook - EPA
