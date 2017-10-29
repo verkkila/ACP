@@ -2,7 +2,7 @@
 ## Applied Computing Project
 
 * Teemu Ikävalko 2476629 teemu.ikavalko@student.oulu.fi (Project manager)
-* Arttu Vuosku (add student number and email here)
+* Arttu Vuosku 2463849 juvuosku@student.oulu.fi
 * Mauri Miettinen (add student number and email here)
 * Valtteri Erkkilä (add student number and email here)
 
@@ -45,11 +45,13 @@ We have found out from the specs of DJI Inspire 1 information
 [The eNose company](http://www.enose.nl/) Company that is specialiced in making portable and lightweight sensor applications. 
 TODO
 
+Air Sensor Guidebook - EPA
+
 ---
 
 # Scenario & Use cases
 
-When one wants to find pollutions from air.
+When you want to find pollutions from air.
 
 ---
 
