@@ -1,10 +1,10 @@
 # ACP - Drone Sensing
 ##Applied Computing Project
 
--Teemu Ikävalko 2476629 teemu.ikavalko@student.oulu.fi (Project manager)
--Arttu Vuosku (add student number and email here)
--Mauri Miettinen (add student number and email here)
--Valtteri Erkkilä (add student number and email here)
+*Teemu Ikävalko 2476629 teemu.ikavalko@student.oulu.fi (Project manager)
+*Arttu Vuosku (add student number and email here)
+*Mauri Miettinen (add student number and email here)
+*Valtteri Erkkilä (add student number and email here)
 
 ---
 
