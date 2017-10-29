@@ -47,6 +47,7 @@ We have found out from the specs of DJI Inspire 1 information
 [Wikipedia article about enoses](https://en.wikipedia.org/wiki/Electronic_nose)
 
 [Forbes article about enose](https://www.forbes.com/sites/robertszczerba/2015/06/22/from-cat-poop-coffee-to-cancer-the-incredible-journey-of-the-e-nose/#717fe7c76101)
+[Arduino similar project](https://plot.ly/arduino/air-quality-tutorial/)
 TODO
 
 Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
