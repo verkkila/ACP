@@ -1,5 +1,5 @@
 # ACP - Drone Sensing
-##Applied Computing Project
+## Applied Computing Project
 
 * Teemu Ikävalko 2476629 teemu.ikavalko@student.oulu.fi (Project manager)
 * Arttu Vuosku (add student number and email here)
