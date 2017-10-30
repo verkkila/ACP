@@ -45,22 +45,19 @@ TODO
 2. Where to find the neccessary sensor and simulation eguipment plus software
 3. Preliminary specs from TA
 4. Decision about sensors and simulators
-We have found out from the specs of DJI Inspire 1 information
 
 ---
 
 # Previous research
-[FOODsniffer](http://www.myfoodsniffer.com) electronic nose for checking if food is safe and fresh to eat.
+[FOODsniffer](http://www.myfoodsniffer.com) Electronic nose for checking if food is fresh and safe to eat.
 
-[Sensor drone for aerial odor mapping for agriculture and security services](http://ieeexplore.ieee.org/abstract/document/7561340/?reload=true) Similar project to what we are making
+[Sensor drone for aerial odor mapping for agriculture and security services](http://ieeexplore.ieee.org/abstract/document/7561340/?reload=true) Similar project using drone for odor mapping in agriculture.
 
 [The eNose company](http://www.enose.nl/) Company that is specialiced in making portable and lightweight sensor applications.
 
 [Air quality monitor using arduino](https://plot.ly/arduino/air-quality-tutorial/)
 
 TODO
-
-
 
 ---
 
@@ -89,9 +86,8 @@ TODO
 ---
 
 # References
-[Wikipedia article about enoses](https://en.wikipedia.org/wiki/Electronic_nose)
-
-[Forbes article about enose](https://www.forbes.com/sites/robertszczerba/2015/06/22/from-cat-poop-coffee-to-cancer-the-incredible-journey-of-the-e-nose/#717fe7c76101)
+[Wikipedia Electronic nose](https://en.wikipedia.org/wiki/Electronic_nose)
+[Wikipedia Sensor](https://en.wikipedia.org/wiki/Sensor)
 
 Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
 
