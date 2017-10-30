@@ -31,13 +31,20 @@
 ---
 
 # Glossary
+* Drone
+	* Unmanned remote controlled aerial vehicle (MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy)
+* Sensor
+	* Electronic component, module or a sybsystem whose purpose is to detect events or changes in environment [Source](https://en.wikipedia.org/wiki/Sensor)
 
 TODO
 
 ---
 
 # Design Process
-
+1. Searching for other similar types of studies 
+2. Where to find the neccessary sensor and simulation eguipment plus software
+3. Preliminary specs from TA
+4. Decision about sensors and simulators
 We have found out from the specs of DJI Inspire 1 information
 
 ---
