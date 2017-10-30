@@ -18,10 +18,13 @@
 ---
 
 # Table of contents
-
-Sensors
-Camera
-Remote controller
+1. Glossary
+2. Design Process
+3. Previous research
+4. Scenario & Use cases
+5. System design
+6. References
+7. Contributions
 
 ---
 
