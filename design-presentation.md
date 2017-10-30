@@ -3,7 +3,7 @@
 
 * Teemu Ikävalko 2476629 teemu.ikavalko@student.oulu.fi (Project manager)
 * Arttu Vuosku 2463849 juvuosku@student.oulu.fi
-* Mauri Miettinen (add student number and email here)
+* Mauri Miettinen 2437710 mauri.miettinen@student.oulu.fi
 * Valtteri Erkkilä (add student number and email here)
 
 ---
@@ -13,7 +13,7 @@
 ![Drone](https://www5.djicdn.com/assets/images/products/inspire-1/banner-product-333577d35493a3213ead13b4f8056e42.png)
 
 * Design a drone that can detect and follow odors
-* Useful in detecting pollution
+* Useful in detecting pollution or fires
 
 ---
 
@@ -41,7 +41,7 @@ TODO
 ---
 
 # Design Process
-1. Searching for other similar types of studies 
+1. Searching for other similar types of studies
 2. Where to find the neccessary sensor and simulation eguipment plus software
 3. Preliminary specs from TA
 4. Decision about sensors and simulators
@@ -56,6 +56,10 @@ TODO
 [The eNose company](http://www.enose.nl/) Company that is specialiced in making portable and lightweight sensor applications.
 
 [Air quality monitor using arduino](https://plot.ly/arduino/air-quality-tutorial/)
+
+[Development of a Portable Electronic Nose System for the Detection and Classification of Fruity Odors](http://www.mdpi.com/1424-8220/10/10/9179/htm) Certain smells have "odor print"
+
+[Concept of an electronic nose](http://www.enose.nl/rd/technology/) Multi-dimensional sensor arrays with broad odor recognition
 
 TODO
 
@@ -75,13 +79,32 @@ TODO
 
 # System design
 
-* 4 base components
+* 4 base components with subcomponents
     * Drone
+		* Receives movement orders from remote
+	* Sensor array + microcontroller
+		* Attaches to drone
+		* Microcontroller program receives and processes data from sensor array
+		* Sends data wirelessly to Android device using built-in libraries
 	* Android device
+		* Purpose-built android application (developed via DJI mobile SDK) receives sensor data and picks movement commands accordingly
+		* Android application interacts with DJI drone control software and gives the drone commands
 	* Remote control device
-	* Sensor array
-* Sensor has a data processor, material sent to android application
-* Android application interacts with drone control software and gives it commands
+		* Signal amplification
+* Developmental questions:
+	* How to map sensor array data into directions?
+	* Design flight patterns based on direction of pollutant?
+
+---
+
+#Risks and analysis
+
+* Drone damage from testing (Major impact, unlikely) -> use simulator
+* Software mostly focused on android device...Disconnect? Delay? (Medium impact, unlikely) -> testing
+* Connection problems? (Major impact, possible) -> testing
+
+* All components offer extensive documentation and UI -> easy to develop
+* Clear system design
 
 ---
 
