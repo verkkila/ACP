@@ -18,13 +18,15 @@
 ---
 
 # Table of contents
-1. Glossary
-2. Design Process
-3. Previous research
-4. Scenario & Use cases
-5. System design
-6. References
-7. Contributions
+0. Cover page
+1. Purpose of the project
+2. Glossary
+3. Design Process
+4. Previous research
+5. Scenario & Use cases
+6. System design
+7. References
+8. Contributions
 
 ---
 
