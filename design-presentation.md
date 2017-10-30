@@ -56,20 +56,23 @@ We have found out from the specs of DJI Inspire 1 information
 
 [The eNose company](http://www.enose.nl/) Company that is specialiced in making portable and lightweight sensor applications.
 
-[Wikipedia article about enoses](https://en.wikipedia.org/wiki/Electronic_nose)
+[Air quality monitor using arduino](https://plot.ly/arduino/air-quality-tutorial/)
 
-[Forbes article about enose](https://www.forbes.com/sites/robertszczerba/2015/06/22/from-cat-poop-coffee-to-cancer-the-incredible-journey-of-the-e-nose/#717fe7c76101)
-
-[Arduino similar project](https://plot.ly/arduino/air-quality-tutorial/)
 TODO
 
-Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
+
 
 ---
 
 # Scenario & Use cases
-
-When you want to find pollutions from air.
+* Scenario
+	* Detecting and locating forest fires from the air
+	* Drone can be easily deployed on site and start automatic search for a possible fire
+	* Drone has live video feed from which the operator on the ground can verify that fire is starting or going.
+* Possible use case
+	* Drone and sensor are activated on the ground and Drone starts automatic search procedure
+	* Drone finds a potential fire and starts to fly to it
+	* Operator on the ground verifies drones findings using onboard camera and live video. 
 
 ---
 
@@ -86,6 +89,11 @@ When you want to find pollutions from air.
 ---
 
 # References
+[Wikipedia article about enoses](https://en.wikipedia.org/wiki/Electronic_nose)
+
+[Forbes article about enose](https://www.forbes.com/sites/robertszczerba/2015/06/22/from-cat-poop-coffee-to-cancer-the-incredible-journey-of-the-e-nose/#717fe7c76101)
+
+Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
 
 TODO
 
