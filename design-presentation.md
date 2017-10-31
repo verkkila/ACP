@@ -105,6 +105,7 @@ TODO
 * Drone damage from testing (Major impact, unlikely) -> use simulator
 * Software mostly focused on android device...Disconnect? Delay? (Medium impact, unlikely) -> testing
 * Connection problems? (Major impact, possible) -> testing
+	* When connection is lost activation of fly home procedure begins
 
 * All components offer extensive documentation and UI -> easy to develop
 * Clear system design
