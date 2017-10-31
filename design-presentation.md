@@ -6,7 +6,7 @@
 * Mauri Miettinen 2437710 mauri.miettinen@student.oulu.fi
 * Valtteri Erkkilä 2425531 valtteri.erkkila@gmail.com
 
- **Date of submission xx.yy.zzzz
+ ** Date of submission xx.yy.zzzz
 
 ---
 
