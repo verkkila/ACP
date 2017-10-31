@@ -97,7 +97,7 @@ TODO
 
 ---
 
-#Risks and analysis
+# Risks and analysis
 
 * Drone damage from testing (Major impact, unlikely) -> use simulator
 * Software mostly focused on android device...Disconnect? Delay? (Medium impact, unlikely) -> testing
