@@ -39,8 +39,10 @@
 * Sensor
 	* Electronic component, module or a sybsystem whose purpose is to detect events or changes in environment [Source](https://en.wikipedia.org/wiki/Sensor)
 
-TODO
-
+* Microcontroller
+	* Add description here
+* Electronic nose
+	* Add description here
 ---
 
 # Design Process
@@ -64,7 +66,7 @@ TODO
 
 [Concept of an electronic nose](http://www.enose.nl/rd/technology/) Multi-dimensional sensor arrays with broad odor recognition
 
-TODO
+
 
 ---
 
@@ -119,7 +121,17 @@ TODO
 
 Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
 
-TODO
+[FOODsniffer](http://www.myfoodsniffer.com) Electronic nose for checking if food is fresh and safe to eat.
+
+[Sensor drone for aerial odor mapping for agriculture and security services](http://ieeexplore.ieee.org/abstract/document/7561340/?reload=true) Similar project using drone for odor mapping in agriculture.
+
+[The eNose company](http://www.enose.nl/) Company that is specialiced in making portable and lightweight sensor applications.
+
+[Air quality monitor using arduino](https://plot.ly/arduino/air-quality-tutorial/)
+
+[Development of a Portable Electronic Nose System for the Detection and Classification of Fruity Odors](http://www.mdpi.com/1424-8220/10/10/9179/htm) Certain smells have "odor print"
+
+[Concept of an electronic nose](http://www.enose.nl/rd/technology/) Multi-dimensional sensor arrays with broad odor recognition
 
 ---
 
