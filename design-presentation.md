@@ -13,7 +13,7 @@
 ![Drone](https://www5.djicdn.com/assets/images/products/inspire-1/banner-product-333577d35493a3213ead13b4f8056e42.png)
 
 * Design a drone that can detect and follow odors
-* Useful in detecting pollution or fires
+* Useful in detecting and locating pollution or fires
 
 ---
 
