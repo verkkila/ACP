@@ -4,7 +4,7 @@
 * Teemu Ikävalko 2476629 teemu.ikavalko@student.oulu.fi (Project manager)
 * Arttu Vuosku 2463849 juvuosku@student.oulu.fi
 * Mauri Miettinen 2437710 mauri.miettinen@student.oulu.fi
-* Valtteri Erkkilä (add student number and email here)
+* Valtteri Erkkilä 2425531 valtteri.erkkila@gmail.com
 
 ---
 
