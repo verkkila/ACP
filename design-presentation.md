@@ -10,7 +10,7 @@
 
 # Purpose and motivation
 
-![Drone](https://www5.djicdn.com/assets/images/products/inspire-1/banner-product-333577d35493a3213ead13b4f8056e42.png)
+![Drone](http://image.helipal.com/dji-inspire-1-v2-big001.jpg)
 
 * Design a drone that can detect and follow odors
 * Useful in detecting pollution or fires
@@ -65,15 +65,16 @@ TODO
 
 ---
 
-# Scenario & Use cases
+# Scenario & Use case
 * Scenario
 	* Detecting and locating forest fires from the air
 	* Drone can be easily deployed on site and start automatic search for a possible fire
 	* Drone has live video feed from which the operator on the ground can verify that fire is starting or going.
 * Possible use case
-	* Drone and sensor are activated on the ground and Drone starts automatic search procedure
-	* Drone finds a potential fire and starts to fly to it
-	* Operator on the ground verifies drones findings using onboard camera and live video. 
+	* Operator activates drone and sensor
+	* Drone starts automatic search procedure to find fires based on sensor data
+	* Fire source activates sensor and gives drone movent commands to follow the gas trail
+	* Operator verifies drone findings via onboard camera and live video to report forward
 
 ---
 
@@ -97,7 +98,7 @@ TODO
 
 ---
 
-#Risks and analysis
+# Risks and analysis
 
 * Drone damage from testing (Major impact, unlikely) -> use simulator
 * Software mostly focused on android device...Disconnect? Delay? (Medium impact, unlikely) -> testing
@@ -120,4 +121,6 @@ TODO
 ---
 
 # Contributions
+
+* Mauri Miettinen (19h,XX%): System design
 
