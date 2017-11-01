@@ -4,7 +4,9 @@
 * Teemu Ikävalko 2476629 teemu.ikavalko@student.oulu.fi (Project manager)
 * Arttu Vuosku 2463849 juvuosku@student.oulu.fi
 * Mauri Miettinen 2437710 mauri.miettinen@student.oulu.fi
-* Valtteri Erkkilä (add student number and email here)
+* Valtteri Erkkilä 2425531 valtteri.erkkila@gmail.com
+
+ #### Date of submission xx.yy.zzzz
 
 ---
 
@@ -13,7 +15,8 @@
 ![Drone](http://image.helipal.com/dji-inspire-1-v2-big001.jpg)
 
 * Design a drone that can detect and follow odors
-* Useful in detecting pollution or fires
+	* For instance locating a starting forest fire 
+* Usefulness in detecting and locating pollution or fires
 
 ---
 
@@ -36,8 +39,10 @@
 * Sensor
 	* Electronic component, module or a sybsystem whose purpose is to detect events or changes in environment [Source](https://en.wikipedia.org/wiki/Sensor)
 
-TODO
-
+* Microcontroller
+	* Add description here
+* Electronic nose
+	* Add description here
 ---
 
 # Design Process
@@ -61,7 +66,7 @@ TODO
 
 [Concept of an electronic nose](http://www.enose.nl/rd/technology/) Multi-dimensional sensor arrays with broad odor recognition
 
-TODO
+
 
 ---
 
@@ -103,6 +108,7 @@ TODO
 * Drone damage from testing (Major impact, unlikely) -> use simulator
 * Software mostly focused on android device...Disconnect? Delay? (Medium impact, unlikely) -> testing
 * Connection problems? (Major impact, possible) -> testing
+	* When connection is lost activation of fly home procedure begins
 
 * All components offer extensive documentation and UI -> easy to develop
 * Clear system design
@@ -116,7 +122,17 @@ TODO
 
 Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
 
-TODO
+[FOODsniffer](http://www.myfoodsniffer.com) Electronic nose for checking if food is fresh and safe to eat.
+
+[Sensor drone for aerial odor mapping for agriculture and security services](http://ieeexplore.ieee.org/abstract/document/7561340/?reload=true) Similar project using drone for odor mapping in agriculture.
+
+[The eNose company](http://www.enose.nl/) Company that is specialiced in making portable and lightweight sensor applications.
+
+[Air quality monitor using arduino](https://plot.ly/arduino/air-quality-tutorial/)
+
+[Development of a Portable Electronic Nose System for the Detection and Classification of Fruity Odors](http://www.mdpi.com/1424-8220/10/10/9179/htm) Certain smells have "odor print"
+
+[Concept of an electronic nose](http://www.enose.nl/rd/technology/) Multi-dimensional sensor arrays with broad odor recognition
 
 ---
 
