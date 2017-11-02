@@ -40,9 +40,9 @@
 	* Electronic component, module or a sybsystem whose purpose is to detect events or changes in environment [Source](https://en.wikipedia.org/wiki/Sensor)
 
 * Microcontroller
-	* Add description here
+	* Electronic component that is used to control the drone. (https://en.wikipedia.org/wiki/Microcontroller)
 * Electronic nose
-	* Add description here
+	* A device intended to detect odors (https://en.wikipedia.org/wiki/Electronic_nose)
 ---
 
 # Design Process
@@ -143,3 +143,4 @@ Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
 
 * Mauri Miettinen (19h,XX%): System design
 * Valtteri Erkkilä (9h, %): Sensor research
+* Arttu Vuosku (4h , XX%): Looking for information
