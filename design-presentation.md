@@ -38,6 +38,7 @@
 
 * Microcontroller
 	* Small computer used in simple calculations usually on a single circuit. [Wikipedia Microcontroller](https://en.wikipedia.org/wiki/Microcontroller)
+	
 * Electronic nose
 	* A device intended to detect odors [Wikipedia Electronic nose](https://en.wikipedia.org/wiki/Electronic_nose)
 ---
@@ -46,9 +47,12 @@
 * We started by looking at previous research, specifically scientific studies and commercial products.
     - The studies gave us insight about how different odors can be identified.
     - The commercial products gave us information about different types of sensors.
+    
 * Next, we searched for suitable sensor equipment as well as development and simulation software.
     - We found plenty of options in both areas.
+    
 * After receiving the preliminary specifications from the TA, we narrowed our scope.
+
 * Finally, we made a decision about the microcontroller and sensors we were going to use.
 
 ---
@@ -75,6 +79,7 @@
 	* Detecting and locating forest fires from the air
 	* Drone can be easily deployed on site and start automatic search for a possible fire
 	* Drone has live video feed from which the operator on the ground can verify that fire is starting or going.
+	
 * Possible use case
 	* Operator activates drone and sensor
 	* Drone starts automatic search procedure to find fires based on sensor data
@@ -86,7 +91,7 @@
 # System design
 
 * 4 base components with subcomponents
-    * Drone
+	* Drone
 		* Receives movement orders from remote
 	* Sensor array + microcontroller
 		* Attaches to drone
@@ -109,7 +114,7 @@
 * Software mostly focused on android device...Disconnect? Delay? (Medium impact, unlikely) -> testing
 * Connection problems? (Major impact, possible) -> testing
 	* When connection is lost activation of fly home procedure begins
-
+	
 * All components offer extensive documentation and UI -> easy to develop
 * Clear system design
 
@@ -125,9 +130,7 @@ Definition for a drone: MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy
 
 [Wikipedia Sensor](https://en.wikipedia.org/wiki/Sensor)
 
-
 [Air Sensor Guidebook - United States Environmental Protection Agency](https://cfpub.epa.gov/si/si_public_file_download.cfm?p_download_id=519616)
-
 
 [FOODsniffer](http://www.myfoodsniffer.com) Electronic nose for checking if food is fresh and safe to eat.
 
