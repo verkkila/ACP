@@ -15,7 +15,7 @@
 ![Drone](http://image.helipal.com/dji-inspire-1-v2-big001.jpg)
 
 * Design a drone that can detect and follow odors	
-* Usefulness in detecting and locating pollution or fires
+* Useful in detecting and locating pollution or fires
 
 ---
 
