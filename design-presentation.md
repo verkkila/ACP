@@ -11,11 +11,9 @@
 ---
 
 # Purpose and motivation
-
-![Drone](http://image.helipal.com/dji-inspire-1-v2-big001.jpg)
-
 * Design a drone that can detect and follow odors	
 * Useful in detecting and locating pollution or fires
+![Drone](http://image.helipal.com/dji-inspire-1-v2-big001.jpg)
 
 ---
 
