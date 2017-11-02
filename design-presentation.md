@@ -15,11 +15,10 @@
 ![Drone](http://image.helipal.com/dji-inspire-1-v2-big001.jpg)
 
 * Design a drone that can detect and follow odors
+
 	* For instance locating a starting forest fire
 	
 * Usefulness in detecting and locating pollution or fires
-
-
 
 ---
 
@@ -122,13 +121,15 @@
 ---
 
 # References
+
+Definition for a drone: MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy
+
 [Wikipedia Electronic nose](https://en.wikipedia.org/wiki/Electronic_nose)
 
 [Wikipedia Microcontroller](https://en.wikipedia.org/wiki/Microcontroller)
 
 [Wikipedia Sensor](https://en.wikipedia.org/wiki/Sensor)
 
-Definition for a drone: MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy
 
 [Air Sensor Guidebook - United States Environmental Protection Agency](https://cfpub.epa.gov/si/si_public_file_download.cfm?p_download_id=519616)
 
