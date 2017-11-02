@@ -18,6 +18,8 @@
 	* For instance locating a starting forest fire 
 * Usefulness in detecting and locating pollution or fires
 
+
+
 ---
 
 # Table of contents
