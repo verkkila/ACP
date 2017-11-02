@@ -151,5 +151,5 @@ Definition for a drone: MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy
 * Teemu Ikävalko (11h, 26%): General Design and managing tasks
 * Mauri Miettinen (19h, 44%): System design
 * Valtteri Erkkilä (9h, 21%): Sensor research
-* Arttu Vuosku (4h , 9%): Looking for information
+* Arttu Vuosku (4h , 9%): Looking for articles and instructions
 
