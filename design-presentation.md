@@ -6,7 +6,7 @@
 * Mauri Miettinen 2437710 mauri.miettinen@student.oulu.fi
 * Valtteri Erkkilä 2425531 valtteri.erkkila@gmail.com
 
- #### Date of submission 02.11.2017
+ #### Date of submission 03.11.2017
 
 ---
 
@@ -37,12 +37,12 @@
 * Drone
 	* Unmanned remote controlled aerial vehicle (MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy)
 * Sensor
-	* Electronic component, module or a sybsystem whose purpose is to detect events or changes in environment [Source](https://en.wikipedia.org/wiki/Sensor)
+	* "Electronic component, module or a sybsystem whose purpose is to detect events or changes in environment" [Wikipedia Sensor](https://en.wikipedia.org/wiki/Sensor)
 
 * Microcontroller
-	* Electronic component that is used to control the drone. (https://en.wikipedia.org/wiki/Microcontroller)
+	* Small computer used in simple calculations usually on a single circuit. [Wikipedia Microcontroller](https://en.wikipedia.org/wiki/Microcontroller)
 * Electronic nose
-	* A device intended to detect odors (https://en.wikipedia.org/wiki/Electronic_nose)
+	* A device intended to detect odors [Wikipedia Electronic nose](https://en.wikipedia.org/wiki/Electronic_nose)
 ---
 
 # Design Process
@@ -121,9 +121,14 @@
 # References
 [Wikipedia Electronic nose](https://en.wikipedia.org/wiki/Electronic_nose)
 
+[Wikipedia Microcontroller](https://en.wikipedia.org/wiki/Microcontroller)
+
 [Wikipedia Sensor](https://en.wikipedia.org/wiki/Sensor)
 
-Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
+Definition for a drone MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy
+
+[Air Sensor Guidebook - EPA (United States Environmental Protection Agency)](https://cfpub.epa.gov/si/si_public_file_download.cfm?p_download_id=519616
+
 
 [FOODsniffer](http://www.myfoodsniffer.com) Electronic nose for checking if food is fresh and safe to eat.
 
@@ -141,6 +146,8 @@ Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
 
 # Contributions
 
-* Mauri Miettinen (19h,XX%): System design
-* Valtteri Erkkilä (9h, %): Sensor research
-* Arttu Vuosku (4h , XX%): Looking for information
+* Teemu Ikävalko (11h, 26%): General Design and managing tasks
+* Mauri Miettinen (19h, 44%): System design
+* Valtteri Erkkilä (9h, 21%): Sensor research
+* Arttu Vuosku (4h , 9%): Looking for information
+
