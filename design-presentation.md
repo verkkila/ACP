@@ -15,7 +15,8 @@
 ![Drone](http://image.helipal.com/dji-inspire-1-v2-big001.jpg)
 
 * Design a drone that can detect and follow odors
-	* For instance locating a starting forest fire 
+	* For instance locating a starting forest fire
+	
 * Usefulness in detecting and locating pollution or fires
 
 
