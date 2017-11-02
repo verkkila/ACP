@@ -46,10 +46,13 @@
 ---
 
 # Design Process
-1. Searching for other similar types of studies
-2. Where to find the neccessary sensor and simulation eguipment plus software
-3. Preliminary specs from TA
-4. Decision about sensors and simulators
+* We started by looking at previous research, specifically scientific studies and commercial products.
+    - The studies gave us insight about how different odors can be identified.
+    - The commercial products gave us information about different types of sensors.
+* Next, we searched for suitable sensor equipment as well as development and simulation software.
+    - We found plenty of options in both areas.
+* After receiving the preliminary specifications from the TA, we narrowed our scope.
+* Finally, we made a decision about the microcontroller and sensors we were going to use.
 
 ---
 
@@ -137,3 +140,4 @@ Air Sensor Guidebook - EPA (United States Environmental Protection Agency)
 
 # Contributions
 
+* Valtteri Erkkilä (9h, %): Sensor research
