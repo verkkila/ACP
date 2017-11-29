@@ -49,16 +49,6 @@ void setup()
   R0[SENSOR_A1] = RS_air[SENSOR_A1]/9.8f;
   R0[SENSOR_A2] = RS_air[SENSOR_A2]/9.8f;
   R0[SENSOR_A3] = RS_air[SENSOR_A3]/9.8f;
-
-  Serial.print("Calculated R0 values: ");
-  Serial.print(R0[SENSOR_A0]);
-  Serial.print(" | ");
-  Serial.print(R0[SENSOR_A1]);
-  Serial.print(" | ");
-  Serial.print(R0[SENSOR_A2]);
-  Serial.print(" | ");
-  Serial.print(R0[SENSOR_A3]);
-  Serial.print("\n");
 }
 
 void loop()
@@ -77,15 +67,7 @@ void loop()
   ratios[SENSOR_A2] = get_resistance(get_voltage(sensor_values[SENSOR_A2])) / R0[SENSOR_A2];
   ratios[SENSOR_A3] = get_resistance(get_voltage(sensor_values[SENSOR_A3])) / R0[SENSOR_A3];
 
-  Serial.print("Ratios: ");
-  Serial.print(ratios[SENSOR_A0]);
-  Serial.print(" | ");
-  Serial.print(ratios[SENSOR_A1]);
-  Serial.print(" | ");
-  Serial.print(ratios[SENSOR_A2]);
-  Serial.print(" | ");
-  Serial.print(ratios[SENSOR_A3]);
-  Serial.print("\n");
+  Serial.write((uint8_t*)ratios, sizeof(float) * 4);
   
   delay(TIME_BETWEEN_READS_MS);
 }
