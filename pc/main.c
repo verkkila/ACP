@@ -18,6 +18,7 @@ struct serial_api serial;
 int main(void)
 {
     float read_floats[4];
+    int i = 0;
 
     if (start_serial == NULL) {
         return 1;
@@ -25,11 +26,12 @@ int main(void)
     if (start_serial(&serial) != 0) {
         return 2;
     }
-    while (true) {
+    while (i < 10) {
         size_t read_bytes = 0;
         read_bytes = serial.read((uint8_t*)read_floats, 4*4);
         if (read_bytes != 4*4)
             continue;
+        ++i;
         printf("%.2f ", read_floats[0]);
         printf("%.2f ", read_floats[1]);
         printf("%.2f ", read_floats[2]);
