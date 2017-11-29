@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-ansi -pedantic -Wall -Wextra -Werror
+CFLAGS=-g -ansi -pedantic -Wall -Wextra -Werror
 LDFLAGS=
 EXEC=main
 SOURCES=$(wildcard *.c)
