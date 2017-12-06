@@ -25,6 +25,16 @@ static size_t ringbuf_distance_to_head(struct ringbuf *rb)
     }
 }
 
+static uint8_t *ringbuf_find_next(struct ringbuf *rb, const uint8_t char_to_find)
+{
+    uint8_t *iter;
+    iter = rb->tail;
+    while (*iter != char_to_find && iter != rb->head) {
+        iter = ringbuf_next_position(rb, iter);
+    }
+    return *iter == char_to_find ? iter : NULL;
+}
+
 struct ringbuf *ringbuf_new(size_t capacity)
 {
     struct ringbuf *rb = malloc(sizeof(struct ringbuf));
@@ -69,6 +79,20 @@ size_t ringbuf_read(struct ringbuf *rb, uint8_t *buf, size_t count)
         }
     }
     return read_bytes;
+}
+
+size_t ringbuf_read_from(struct ringbuf *rb, const uint8_t start_char, uint8_t *buf, size_t count)
+{
+    uint8_t *next_char;
+    next_char = ringbuf_find_next(rb, start_char);
+    if (next_char == NULL)
+        return 0;
+    rb->tail = next_char + 1;
+    if (ringbuf_distance_to_head(rb) >= count) {
+        memcpy(buf, rb->tail, count);
+        return count;
+    }
+    return 0;
 }
 
 size_t ringbuf_write(struct ringbuf *rb, const uint8_t *buf, size_t count)
