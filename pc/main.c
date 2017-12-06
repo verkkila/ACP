@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#if defined _WIN32
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
+#elif defined __unix
+#include <unistd.h>
+#endif
 
 #include "serial.h"
 
@@ -17,9 +22,10 @@ struct serial_api serial;
 
 int main(void)
 {
-    float read_floats[4];
+    float sensor_data[4];
     int i = 0;
 
+    memset(sensor_data, 0, 4*sizeof(sensor_data[0]));
     if (start_serial == NULL) {
         return 1;
     }
@@ -27,18 +33,19 @@ int main(void)
         return 2;
     }
     while (i < 10) {
-        size_t read_bytes = 0;
-        read_bytes = serial.read((uint8_t*)read_floats, 4*4);
-        if (read_bytes != 4*4)
+        if (serial.read((uint8_t*)sensor_data, 4*sizeof(sensor_data[0])) != 0) {
             continue;
+        }
         ++i;
-        printf("%.2f ", read_floats[0]);
-        printf("%.2f ", read_floats[1]);
-        printf("%.2f ", read_floats[2]);
-        printf("%.2f ", read_floats[3]);
+        printf("%.2f ", sensor_data[0]);
+        printf("%.2f ", sensor_data[1]);
+        printf("%.2f ", sensor_data[2]);
+        printf("%.2f ", sensor_data[3]);
         printf("\n");
-#ifdef _WIN32
+#if defined _WIN32
         Sleep(500);
+#elif defined __unix
+        usleep(500*1000);
 #endif
     }
     serial.close();
