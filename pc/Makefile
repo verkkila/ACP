@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-g -ansi -pedantic -Wall -Wextra -Werror
-LDFLAGS=
+CFLAGS=-g -std=gnu99 -Wall -Wextra -Werror
+LDFLAGS=-lpthread
 EXEC=main
 SOURCES=$(wildcard *.c)
 OBJECTS=$(SOURCES:.c=.o)
