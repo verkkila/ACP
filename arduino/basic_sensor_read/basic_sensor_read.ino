@@ -67,6 +67,7 @@ void loop()
   ratios[SENSOR_A2] = get_resistance(get_voltage(sensor_values[SENSOR_A2])) / R0[SENSOR_A2];
   ratios[SENSOR_A3] = get_resistance(get_voltage(sensor_values[SENSOR_A3])) / R0[SENSOR_A3];
 
+  Serial.write("B");
   Serial.write((uint8_t*)ratios, sizeof(float) * 4);
   
   delay(TIME_BETWEEN_READS_MS);
