@@ -1,3 +1,4 @@
+#ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #include "serial.h"
@@ -12,7 +13,7 @@ static size_t read(uint8_t *buffer, size_t count)
 {
     size_t read_bytes = 0;
     EnterCriticalSection(&rx_buffer_lock);
-    read_bytes = ringbuf_read(rx_buffer, buffer, count);
+    read_bytes = ringbuf_read_from(rx_buffer, 'B', buffer, count);
     LeaveCriticalSection(&rx_buffer_lock);
     return read_bytes;
 }
@@ -118,3 +119,4 @@ int windows_serial_init(struct serial_api *serial)
     serial->close = close;
     return 0;
 }
+#endif
