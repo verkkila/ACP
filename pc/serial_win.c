@@ -8,6 +8,7 @@ static HANDLE event_handler_thread = NULL;
 static bool event_handler_running = true;
 static CRITICAL_SECTION rx_buffer_lock;
 static struct ringbuf *rx_buffer;
+static char *arduino_port = NULL;
 
 static size_t read(uint8_t *buffer, size_t count)
 {
@@ -38,7 +39,29 @@ static int close(void)
     CloseHandle(event_handler_thread);
     ringbuf_free(&rx_buffer);
     CloseHandle(COM_port);
+    free(arduino_port);
     return 0;
+}
+
+static char *windows_get_serial_port(const char *name)
+{
+    char port_name[5] = "COM0";
+    TCHAR path[64];
+
+    for (int i = 0; i < 10; ++i) {
+        port_name[3] = '0' + i;
+
+        if (QueryDosDevice(port_name, path, 64)) {
+            if (strstr(path, name) != NULL) {
+                printf("Found Arduino in port %s\n", port_name);
+                char *ret = malloc(5);
+                strcpy(ret, port_name);
+                return ret;
+            }
+            printf("Port: %s, device %s\n", port_name, path);
+        }
+    }
+    return NULL;
 }
 
 static DWORD WINAPI windows_serial_poll(void *params)
@@ -72,9 +95,13 @@ int windows_serial_init(struct serial_api *serial)
     DCB dcb_conf;
     COMMTIMEOUTS comm_timeouts;
     /*TODO: no hardcoding for COM port*/
-    COM_port = CreateFile("COM6", GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING, 0, NULL);
-    if (COM_port == INVALID_HANDLE_VALUE) {
+    arduino_port = windows_get_serial_port("USB");
+    if (arduino_port == NULL) {
         return 1;
+    }
+    COM_port = CreateFile(arduino_port, GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING, 0, NULL);
+    if (COM_port == INVALID_HANDLE_VALUE) {
+        return 2;
     }
     if (GetCommState(COM_port, &dcb_conf)) {
         dcb_conf.BaudRate = 9600;
@@ -85,11 +112,11 @@ int windows_serial_init(struct serial_api *serial)
         dcb_conf.fParity = TRUE;
     } else {
         /*error*/
-        return 2;
+        return 3;
     }
     if (!SetCommState(COM_port, &dcb_conf)) {
         /*error*/
-        return 3;
+        return 4;
     }
     if (GetCommTimeouts(COM_port, &comm_timeouts)) {
         comm_timeouts.ReadIntervalTimeout = 500;
@@ -99,17 +126,17 @@ int windows_serial_init(struct serial_api *serial)
         comm_timeouts.WriteTotalTimeoutMultiplier = 1;
     } else {
         /*error*/
-        return 4;
+        return 5;
     }
     if (!SetCommTimeouts(COM_port, &comm_timeouts)) {
         /*error*/
-        return 5;
+        return 6;
     }
     event_handler_thread = CreateThread(NULL, 0, (LPTHREAD_START_ROUTINE)windows_serial_poll, NULL, 0, NULL);
 
     rx_buffer = ringbuf_new(512);
     if (!rx_buffer) {
-        return 6;
+        return 7;
     }
 
     InitializeCriticalSection(&rx_buffer_lock);
