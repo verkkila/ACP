@@ -6,7 +6,7 @@
 #define SENSOR_A3 3
 
 #define NUM_CALIBRATION_READS 100
-#define TIME_BETWEEN_READS_MS 1000
+#define TIME_BETWEEN_READS_MS 500
 
 static float R0[4] = {};
 
@@ -67,8 +67,8 @@ void loop()
   ratios[SENSOR_A2] = get_resistance(get_voltage(sensor_values[SENSOR_A2])) / R0[SENSOR_A2];
   ratios[SENSOR_A3] = get_resistance(get_voltage(sensor_values[SENSOR_A3])) / R0[SENSOR_A3];
 
-  Serial.write("B");
   Serial.write((uint8_t*)ratios, sizeof(float) * 4);
+  Serial.write('\n');
   
   delay(TIME_BETWEEN_READS_MS);
 }
