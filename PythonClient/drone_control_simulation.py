@@ -1,27 +1,21 @@
 from AirSimClient import *
+import random
 
-#client = MultirotorClient()
-#client.confirmConnection()
-#client.enableApiControl(True)
-#client.armDisarm(True)
-#
-#AirSimClientBase.wait_key('Press any key to takeoff')
-#client.takeoff()
-#
-#
-#client.moveToPosition(-5, 5, -5, 5)
-#client.moveToPosition(0, 0, -1, 1)
-#client.land()
-#client.armDisarm(False)
-#
-#client.enableApiControl(False)
+'''
+This script represents the drone remote controller wih the other components being:
+1. A fire_location
+2. Four DroneSensors
+3. A DroneArduino base plate
+4. A MultirotorClient simulating the drone
+'''
 
 fire_location = Vector3r(100,100,1.5)
 SENSOR_DIST = 0.05 #How far away the sensors are from baseplate
 ARD_HEIGHT = 0.05 #how far down Arduino is from the drone center
 SMELL_DROPRATE_PERC = 0.99 #how much lower the smell is per one meter traveled, EXPONENTIAL DECREASE
-MAX_INTENSITY = 10 #what is the intensity from 0-11 that means the drone won't get any closer
-
+MAX_INTENSITY_THRESH = 9 #what is the intensity threshold from 0-11 that drone won't try to exceed by movement
+DRONE_VELOCITY = 5
+FLIGHT_HEIGHT = 10 
 
 class DroneSensor:
 	'''
@@ -72,10 +66,23 @@ client.enableApiControl(True)
 client.armDisarm(True)
 client.takeoff()
 arduino = DroneArduino(client,Vector3r(0,0,ARD_HEIGHT))
-print("DRONE",client.getPosition().x_val,client.getPosition().y_val,client.getPosition().z_val)
-print("ARDUINO",arduino.getPosition().x_val,arduino.getPosition().y_val,arduino.getPosition().z_val)
+client.moveToPosition(0, 0, -FLIGHT_HEIGHT, 5)
+
 a,b,c,d = arduino.getData()
-print(a, b, c, d)
+while a < MAX_INTENSITY_THRESH and b < MAX_INTENSITY_THRESH and c < MAX_INTENSITY_THRESH and d < MAX_INTENSITY_THRESH:
+	vx_unscaled = a - d
+	vy_unscaled = c - b
+	scale_factor = math.sqrt(math.pow(vx_unscaled, 2) + math.pow(vy_unscaled, 2)) #normalization
+	print("DRONE",client.getPosition().x_val,client.getPosition().y_val,client.getPosition().z_val)
+	
+	client.moveByVelocity(vx_unscaled/scale_factor*DRONE_VELOCITY, vy_unscaled/scale_factor*DRONE_VELOCITY, -1*np.sign(FLIGHT_HEIGHT+client.getPosition().z_val), 0.3, DrivetrainType.ForwardOnly)
+	
+	a,b,c,d = arduino.getData()
+	if random.randint(1,500)==1:
+		fire_location = Vector3r(100*(random.random() * 2 - 1),100*(random.random() * 2 - 1),1.5)
+		print("New FIRE", fire_location.x_val, fire_location.y_val)
+
+client.hover()
 client.land()
-client.armDisarm(False)
-client.enableApiControl(False)
+#client.armDisarm(False)
+#client.enableApiControl(False)
