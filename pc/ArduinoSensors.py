@@ -1,10 +1,10 @@
 import array
-import array
 import serial
+import sys
+import time
 from serial.tools import list_ports
 from threading import Thread
 
-import time
 
 class ArduinoSensors(Thread):
     def __init__(self):
@@ -16,15 +16,19 @@ class ArduinoSensors(Thread):
         Thread.__init__(self)
 
     def open(self):
-        try:
-            port = next(list_ports.grep("Arduino"))
-        except StopIteration:
-            print("Arduino not found!")
+        if "-s" in sys.argv:
+            self._serial_port = serial.Serial("/tmp/socatout", 9600, timeout = 3)
         else:
-            self._serial_port = serial.Serial(port.device, 9600, timeout = 3)
-            self._running = True
-            self.start()
-            print("Serial port opened and poll thread running")
+            try:
+                port = next(list_ports.grep("Arduino"))
+            except StopIteration:
+                print("Arduino not found!")
+                return
+            else:
+                self._serial_port = serial.Serial(port.device, 9600, timeout = 3)
+        self._running = True
+        self.start()
+        print("Serial port opened and poll thread running")
 
     def close(self):
         self._running = False
