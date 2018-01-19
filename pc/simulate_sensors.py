@@ -4,6 +4,9 @@ import noise
 import math
 import time
 
+#seconds
+data_rate = 0.5
+
 board_x = 0
 board_y = 0
 sensor_offset = 0.0000001
@@ -13,9 +16,9 @@ y_offset = 0
 
 BASE = 9.8
 
-octs=16
+octs=24
 ps=2.0
-lac=2.2
+lac=2.3
 scale=3
 
 i = 0
@@ -33,4 +36,4 @@ while True:
     packed = struct.pack("ffffc", sensor_1_value, sensor_2_value, sensor_3_value, sensor_4_value, b'\n')
     sys.stdout.write(str(packed))
     sys.stdout.flush()
-    time.sleep(1)
+    time.sleep(data_rate)
