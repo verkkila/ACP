@@ -4,7 +4,8 @@ import sys
 import time
 from serial.tools import list_ports
 from threading import Thread
-
+from threading import Event
+from threading import Lock
 
 class ArduinoSensors(Thread):
     def __init__(self):
@@ -13,6 +14,8 @@ class ArduinoSensors(Thread):
         self._sensor_1_value = 0.0
         self._sensor_2_value = 0.0
         self._sensor_3_value = 0.0
+        self._stop_event = Event()
+        self._sensor_lock = Lock()
         Thread.__init__(self)
 
     def open(self):
@@ -37,7 +40,7 @@ class ArduinoSensors(Thread):
 
     def close(self):
         self._running = False
-        #wait for run() to stop before closing serial port
+        self._stop_event.wait()
         self._serial_port.close()
 
     def run(self):
