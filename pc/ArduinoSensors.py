@@ -90,9 +90,9 @@ if __name__ == "__main__":
     try:
         while True:
             time.sleep(1)
-            print("Front: {}".format(sensors.get_front()), end=" ")
-            print("Back:  {}".format(sensors.get_back()), end=" ")
-            print("Left:  {}".format(sensors.get_left()), end=" ")
-            print("Right: {}".format(sensors.get_right()))
+            print("Front: {0:.3f}".format(sensors.get_front()), end=" ")
+            print("Back: {0:.3f}".format(sensors.get_back()), end=" ")
+            print("Left: {0:.3f}".format(sensors.get_left()), end=" ")
+            print("Right: {0:.3f}".format(sensors.get_right()))
     except KeyboardInterrupt:
         sensors.close()
