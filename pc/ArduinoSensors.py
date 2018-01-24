@@ -60,37 +60,28 @@ class ArduinoSensors(Thread):
             self._sensor_lock.release()
         self._stop_event.set()
 
-    def get_front(self, block_until_ready=True):
+    def get_sensor(self, sensor_name, block_until_ready = True):
         if self._sensor_lock.acquire(block_until_ready):
-            sensor_value = self._sensor_2_value
+            try:
+                sensor_value = self._sensor_values[self._sensors[sensor_name]]
+            except KeyError:
+                print("Sensor {} doesn't exist.")
             self._sensor_lock.release()
             return sensor_value
         else:
             return 0.0
 
-    def get_back(self, block_until_ready=True):
-        if self._sensor_lock.acquire(block_until_ready):
-            sensor_value = self._sensor_0_value
-            self._sensor_lock.release()
-            return sensor_value
-        else:
-            return 0.0
+    def get_front(self):
+        return self.get_sensor("front")
 
-    def get_left(self, block_until_ready=True):
-        if self._sensor_lock.acquire(block_until_ready):
-            sensor_value = self._sensor_1_value
-            self._sensor_lock.release()
-            return sensor_value
-        else:
-            return 0.0
+    def get_back(self):
+        return self.get_sensor("back")
 
-    def get_right(self, block_until_ready=True):
-        if self._sensor_lock.acquire(block_until_ready):
-            sensor_value = self._sensor_3_value
-            self._sensor_lock.release()
-            return sensor_value
-        else:
-            return 0.0
+    def get_left(self):
+        return self.get_sensor("left")
+
+    def get_right(self):
+        return self.get_sensor("right")
 
 if __name__ == "__main__":
     sensors = ArduinoSensors()
