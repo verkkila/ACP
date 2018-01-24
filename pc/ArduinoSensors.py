@@ -17,6 +17,7 @@ class ArduinoSensors(Thread):
                          "left": 1,
                          "right": 3}
         self._stop_event = Event()
+        self._init_event = Event()
         self._sensor_lock = Lock()
         Thread.__init__(self)
 
@@ -37,7 +38,8 @@ class ArduinoSensors(Thread):
                 self._serial_port = serial.Serial(port.device, 9600, timeout = 3)
         self._running = True
         self.start()
-        print("Serial port opened and poll thread running")
+        print("Serial port opened and polling thread started.")
+        self._init_event.set()
         return True
 
     def close(self):
@@ -46,8 +48,7 @@ class ArduinoSensors(Thread):
         self._serial_port.close()
 
     def run(self):
-        while not self._serial_port:
-            pass
+        self._init_event.wait()
 
         while self._running:
             line = self._serial_port.readline()
