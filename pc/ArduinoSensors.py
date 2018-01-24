@@ -2,6 +2,7 @@ import array
 import serial
 import sys
 import time
+import struct
 from serial.tools import list_ports
 from threading import Thread
 from threading import Event
@@ -10,10 +11,11 @@ from threading import Lock
 class ArduinoSensors(Thread):
     def __init__(self):
         self._serial_port = None
-        self._sensor_0_value = 0.0
-        self._sensor_1_value = 0.0
-        self._sensor_2_value = 0.0
-        self._sensor_3_value = 0.0
+        self._sensor_values = [0.0, 0.0, 0.0, 0.0]
+        self._sensors = {"front": 2,
+                         "back": 0,
+                         "left": 1,
+                         "right": 3}
         self._stop_event = Event()
         self._sensor_lock = Lock()
         Thread.__init__(self)
@@ -49,20 +51,12 @@ class ArduinoSensors(Thread):
 
         while self._running:
             line = self._serial_port.readline()
-            line = line.rstrip(b"\n")
+            self._sensor_lock.acquire(True)
             try:
-                data_floats = array.array("f", line)
-                self._sensor_lock.acquire(True)
-                self._sensor_0_value = data_floats[0]
-                self._sensor_1_value = data_floats[1]
-                self._sensor_2_value = data_floats[2]
-                self._sensor_3_value = data_floats[3]
-                self._sensor_lock.release()
-            except ValueError:
-                print("Failed to convert line: {}(len: {})".format(line, len(line)))
-                pass
-            except IndexError:
-                pass
+                self._sensor_values = list(struct.unpack("ffffc", line)[:-1])
+            except struct.error:
+                print("Failed to convert line: {} (length {})".format(line, len(line)))
+            self._sensor_lock.release()
         self._stop_event.set()
 
     def get_front(self, block_until_ready=True):
