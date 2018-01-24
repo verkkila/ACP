@@ -1,5 +1,7 @@
 in_name="/tmp/socatin"
 out_name="/tmp/socatout"
+
+echo "Starting socat, in = $in_name, out = $out_name"
 socat -d -d pty,raw,echo=0,link=$in_name pty,raw,echo=0,link=$out_name &
 socat_pid=$!
 
