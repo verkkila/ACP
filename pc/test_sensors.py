@@ -2,13 +2,15 @@ import ArduinoSensors
 import time
 import sys
 
-sensors = ArduinoSensors.ArduinoSensors(poll_rate = 100)
+sensors = ArduinoSensors.ArduinoSensors()
 sensors.open()
 update_rate = 0.5
 try:
     update_rate = float(sys.argv[1]) * 0.001
 except (IndexError, TypeError):
     print("Using default refresh rate of {} ms".format(update_rate * 1000))
+else:
+    print("Using refresh rate of {} ms".format(update_rate * 1000))
 
 while True:
     try:

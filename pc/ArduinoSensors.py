@@ -10,20 +10,20 @@ from threading import Lock
 
 print_errors = False
 
-class ArduinoSensors(Thread):
-    def __init__(self, poll_rate = 300):
+class ArduinoSensors():
+    def __init__(self):
         self._serial_port = None
         self._sensor_values = [0.0, 0.0, 0.0, 0.0]
         self._sensors = {"front": 2,
                          "back": 0,
                          "left": 1,
                          "right": 3}
-        self._poll_rate = poll_rate
-        self._first_line_read = False
-        self._stop_event = Event()
-        self._init_event = Event()
-        self._sensor_lock = Lock()
-        Thread.__init__(self, daemon = True)
+        self._fresh_value = {"front": False,
+                             "back": False,
+                             "left": False,
+                             "right": False}
+        self._initialized = False
+        self._last_read_at = time.clock()
 
     def open(self):
         try:
@@ -33,22 +33,13 @@ class ArduinoSensors(Thread):
             return False
         else:
             self._serial_port = serial.Serial(port.device, 9600, timeout = 2)
-        self._running = True
-        self.start()
-        print("Serial port opened and polling thread started.")
         self._serial_port.reset_input_buffer()
         self._serial_port.reset_output_buffer()
-        self._init_event.set()
-        self._serial_port.write(b"A")
+        self._initialized = True
         return True
 
     def close(self):
-        self._running = False
-        self._stop_event.wait()
         self._serial_port.close()
-
-    def set_update_rate(self, new_ms):
-        self._poll_rate = new_ms
 
     def __readline(self):
         line = []
@@ -61,38 +52,39 @@ class ArduinoSensors(Thread):
             line.append(in_byte)
         if len(line) == 0:
             return b""
-        if not self._first_line_read:
-            self._first_line_read = True
         return b"".join(line)
 
-    def run(self):
-        self._init_event.wait()
+    def __read_sensors(self):
+        if not self._initialized:
+            print("Run open() before trying to read sensors!")
+            return False
 
-        while self._running:
-            self._serial_port.write(b"A")
-            line = self.__readline()
-            self._sensor_lock.acquire(True)
-            try:
-                self._sensor_values = list(struct.unpack("ffffc", line)[:-1])
-            except struct.error:
-                if print_errors:
-                    print("Failed to convert line: {} (length {})".format(line, len(line)))
-            self._sensor_lock.release()
-            time.sleep(0.001 * self._poll_rate)
-        self._stop_event.set()
+        self._serial_port.write(b"A")
+        line = self.__readline()
+        try:
+            self._sensor_values = list(struct.unpack("ffffc", line)[:-1])
+        except struct.error:
+            print("Failed to convert line: {} (length {})".format(line, len(line)))
+            return False
+        self._fresh_value["front"] = True
+        self._fresh_value["back"] = True
+        self._fresh_value["left"] = True
+        self._fresh_value["right"] = True
+        self._last_read_at = time.clock()
+        return True
+
+    def __expired(self):
+        now = time.clock()
+        return now - self._last_read_at > 1.0
 
     def __get_sensor(self, sensor_name, block_until_ready = True):
-        while not self._first_line_read:
-            pass
-        if self._sensor_lock.acquire(block_until_ready):
-            try:
-                sensor_value = self._sensor_values[self._sensors[sensor_name]]
-            except KeyError:
-                print("Sensor {} doesn't exist.".format(sensor_name))
-            self._sensor_lock.release()
-            return sensor_value
+        if self._fresh_value[sensor_name] and not self.__expired():
+            value = self._sensor_values[self._sensors[sensor_name]]
+            self._fresh_value[sensor_name] = False
+            return value
         else:
-            return 0.0
+            self.__read_sensors()
+            return self._sensor_values[self._sensors[sensor_name]]
 
     def get_front(self):
         return self.__get_sensor("front")
