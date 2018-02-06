@@ -73,7 +73,6 @@ while a < MAX_INTENSITY_THRESH and b < MAX_INTENSITY_THRESH and c < MAX_INTENSIT
 	vx_unscaled = a - d
 	vy_unscaled = c - b
 	scale_factor = math.sqrt(math.pow(vx_unscaled, 2) + math.pow(vy_unscaled, 2)) #normalization
-	print("DRONE",client.getPosition().x_val,client.getPosition().y_val,client.getPosition().z_val)
 	
 	client.moveByVelocity(vx_unscaled/scale_factor*DRONE_VELOCITY, vy_unscaled/scale_factor*DRONE_VELOCITY, -1*np.sign(FLIGHT_HEIGHT+client.getPosition().z_val), 0.3, DrivetrainType.ForwardOnly)
 	
