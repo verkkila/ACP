@@ -11,7 +11,7 @@ from threading import Lock
 print_errors = False
 
 class ArduinoSensors():
-    def __init__(self):
+    def __init__(self, print_errors = False):
         self._serial_port = None
         self._sensor_values = [0.0, 0.0, 0.0, 0.0]
         self._sensors = {"front": 2,
@@ -24,12 +24,13 @@ class ArduinoSensors():
                              "right": False}
         self._initialized = False
         self._last_read_at = time.clock()
+        self._print_errors = print_errors
 
     def open(self):
         try:
             port = next(list_ports.grep("Arduino"))
         except StopIteration:
-            print("Arduino not found!")
+            self.__error("Arduino not found!")
             return False
         else:
             self._serial_port = serial.Serial(port.device, 9600, timeout = 2)
@@ -40,6 +41,10 @@ class ArduinoSensors():
 
     def close(self):
         self._serial_port.close()
+
+    def __error(self, msg):
+        if self._print_errors:
+            print(msg)
 
     def __readline(self):
         line = []
@@ -56,7 +61,7 @@ class ArduinoSensors():
 
     def __read_sensors(self):
         if not self._initialized:
-            print("Run open() before trying to read sensors!")
+            self.__error("Run open() before trying to read sensors!")
             return False
 
         self._serial_port.write(b"A")
@@ -64,7 +69,7 @@ class ArduinoSensors():
         try:
             self._sensor_values = list(struct.unpack("ffffc", line)[:-1])
         except struct.error:
-            print("Failed to convert line: {} (length {})".format(line, len(line)))
+            self.__error("Failed to convert line: {} (length {})".format(line, len(line)))
             return False
         self._fresh_value["front"] = True
         self._fresh_value["back"] = True
