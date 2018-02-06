@@ -12,10 +12,31 @@
 
 # Table of Contents
 
+1. Introduction
+2. Glossary
+3. Implementation Process
+4. Software Architecture
+5. Data Structures
+6. Hardware Documentation
+7. Third Party Materials
+8. Security and Privacy
+9. Project Risk Assessment
+10. References
+11. Contributions
 
 ---
 
 # Introduction
+
+![Drone](http://image.helipal.com/dji-inspire-1-v2-big001.jpg)
+* Design a drone that can detect and follow odors	
+* Useful in detecting and locating pollution or fires
+* System design & organization
+    * Sensor array (Arduino) -> Sensor API (C) -> FlightSim API (Python) -> Microsoft FlightSim (Unreal Engine)
+* Constraints and assumptions
+    * No physical drone available!
+    * No need for height changes
+    * Ideal work environment
 
 ---
 
