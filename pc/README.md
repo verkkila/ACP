@@ -1,1 +1,1 @@
-Most of the stuff is from the github repo, failure.py is mine
+drone_control_setup by @mamietti, otherwise provided by AirSim API
