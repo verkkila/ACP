@@ -1,0 +1,1 @@
+drone_control_setup by @mamietti, otherwise provided by AirSim API
