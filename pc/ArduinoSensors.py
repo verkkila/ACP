@@ -3,12 +3,14 @@ import serial
 import sys
 import time
 import struct
+import logging
 from serial.tools import list_ports
 from threading import Thread
 from threading import Event
 from threading import Lock
 
 print_errors = False
+logger = logging.getLogger("arduino")
 
 class ArduinoSensors():
     def __init__(self, print_errors = False):
@@ -45,6 +47,7 @@ class ArduinoSensors():
     def __error(self, msg):
         if self._print_errors:
             print(msg)
+        logger.error(msg)
 
     def __readline(self):
         line = []
