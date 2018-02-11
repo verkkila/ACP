@@ -35,7 +35,7 @@
     * Sensor array (Arduino) -> Sensor API (C) -> FlightSim API (Python) -> Microsoft FlightSim (Unreal Engine)
 * Constraints and assumptions
     * No physical drone available!
-    * No need for height changes
+    * No need for height changes/obstacle detection
     * Ideal work environment
 
 ---
@@ -49,6 +49,8 @@
 ---
 
 # Software Architecture
+
+* 
 
 ---
 
