@@ -93,6 +93,7 @@ class PlaybackArduinoSensors:
         try:
             if self.firsttime + (datetime.datetime.now() - self.starttime) >= self.timelist[self.index+1][0]:
                 self.index += 1
+                print("Current reading:",datetime.datetime.strftime(self.timelist[self.index][0], "%H:%M:%S"),self.timelist[self.index][1],self.timelist[self.index][2],self.timelist[self.index][3],self.timelist[self.index][4])
         except IndexError:
             return 0
         return self.timelist[self.index][val]
@@ -149,7 +150,6 @@ client.takeoff()
 client.moveToPosition(0, 0, -FLIGHT_HEIGHT, 5)
 
 a,b,c,d = arduino.get_front(), arduino.get_left(), arduino.get_right(), arduino.get_back()
-print(a,b,c,d)
 while abs(a-d)>INTENSITY_THRESH or abs(b-c)>INTENSITY_THRESH:
     vx_unscaled = a - d
     vy_unscaled = c - b
@@ -157,7 +157,6 @@ while abs(a-d)>INTENSITY_THRESH or abs(b-c)>INTENSITY_THRESH:
     
     client.moveByVelocity(-vx_unscaled/scale_factor*DRONE_VELOCITY, -vy_unscaled/scale_factor*DRONE_VELOCITY, -1*np.sign(FLIGHT_HEIGHT+client.getPosition().z_val), 0.3, DrivetrainType.ForwardOnly)
     a,b,c,d = arduino.get_front(), arduino.get_left(), arduino.get_right(), arduino.get_back()
-    print(a,b,c,d)
     if mode==1 and random.randint(1,500)==1 and MAX_REPEATS>0:
         fire_location = Vector3r(100*(random.random() * 2 - 1),100*(random.random() * 2 - 1),1.5)
         MAX_REPEATS -= 5
