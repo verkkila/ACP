@@ -123,6 +123,7 @@
     * No wireless communication in test configuration -> attacks only on endpoints
     * IRL scenario -> multiple components connected wirelessly -> encryption! key negotiation!
 * No private data storage -> low-risk environment
+* Possibility of malicious entity to input large amount of gas for sensor readings in an attempt to steal or corrupt drone and sensor array in real world testing
 
 ---
 
