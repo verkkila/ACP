@@ -56,6 +56,10 @@
 ---
 
 # Implementation Process
+1. Locating correctly working and easily optaineable sensor and development platform
+2. Manufacturing sensor support structure in Fablan using Lasercutter
+3. Development of Simulation software and how to input sensor readings to it
+4. Logging sensor readings into text file
 
 ---
 
@@ -99,6 +103,9 @@
 ---
 
 # Hardware Documentation
+* Grove MQ2 multipurpose gas sensor (whole array concist 4 of these)
+	* Sensors readings depends heavily on ambient temperature and wind conditions usage possible only in controlled environments
+* Arduido base development kit
 
 ---
 
