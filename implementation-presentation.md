@@ -72,13 +72,16 @@
 
 ---
 
-# Python API
+# Serial communication API (Python)
 
 * ArduinoSensors.py
-* object
-* FIXME VALTTERI
-* Functions
-    * get_left and such??
+* Handles serial communication with the Arduino:
+    * Python sends a byte to the Arduino, which notifies the Arduino to read the sensors (every one of them).
+    * The Arduino then sends back an array of sensor data to the Python script.
+* Exposes an interface to the user:
+    * Function for reading every sensor (e.g. get_front()), as well as opening and closing the serial connection.
+    * Only requests a sensor read if necessary (i.e. two calls two the same function would result in two reads, whereas calls to different functions would be done with one read (second result is cached from the first read, expires over time)).
+    * Inefficient, subject to change.
 
 ---
 
