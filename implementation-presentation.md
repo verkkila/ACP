@@ -106,9 +106,15 @@
 ---
 
 # Hardware Documentation
-* Grove MQ2 multipurpose gas sensor (whole array concist 4 of these)
-	* Sensors readings depends heavily on ambient temperature and wind conditions usage possible only in controlled environments
-* Arduido base development kit
+![Sensors](https://github.com/verkkila/ACP/blob/implementation-presentation/sensors.png)
+* Arduino UNO 3
+	* Calculates usable values from the sensor readings (which are voltages) and communicates with the computer
+* Grove Base Shield
+	* Connects the sensors to the Arduino
+* 4x Grove MQ2 multipurpose gas sensor
+	* Intented for gases, but will detect anything that increases conductivity in air (no information about concentrations for unknown substances)
+	* Readings affected by environmental factors (humidity, temperature, wind)
+	* Can be calibrated to the current environment however (setting the baseline)
 
 ---
 
