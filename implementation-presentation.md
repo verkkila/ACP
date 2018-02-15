@@ -16,7 +16,6 @@
 2. Glossary
 3. Implementation Process
 4. Software Architecture
-5. Data Structures
 6. Hardware Documentation
 7. Third Party Materials
 8. Security and Privacy
@@ -170,7 +169,7 @@ Definition for a drone: MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy
 
 # Contributions
 FIXME
-* Teemu Ikävalko (11h, 26%): General Design and managing tasks
+* Teemu Ikävalko (26h, xx%): Sensor support design and construction in fablab, general managing task + powerpoint
 * Mauri Miettinen (31h, xx%): Python movement control, simulator functionality assessment
 * Valtteri Erkkilä (32h, xx%): Sensor testing and serial API implementation
 * Arttu Vuosku (4h , 9%): Looking for articles and instructions
