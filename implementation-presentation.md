@@ -162,6 +162,6 @@
 FIXME
 * Teemu Ikävalko (11h, 26%): General Design and managing tasks
 * Mauri Miettinen (19h, 44%): System design
-* Valtteri Erkkilä (9h, 21%): Sensor research
+* Valtteri Erkkilä (32h, xx%): Sensor testing and serial API implementation
 * Arttu Vuosku (4h , 9%): Looking for articles and instructions
 
