@@ -45,7 +45,7 @@
 * Drone
 	* Unmanned remote controlled aerial vehicle (MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy)
 * Sensor
-	* "Electronic component, module or a sybsystem whose purpose is to detect events or changes in environment" [Wikipedia Sensor](https://en.wikipedia.org/wiki/Sensor)
+	* "Electronic component, module or a subsystem whose purpose is to detect events or changes in environment" [Wikipedia Sensor](https://en.wikipedia.org/wiki/Sensor)
 
 * Microcontroller
 	* Small computer used in simple calculations usually on a single circuit. [Wikipedia Microcontroller](https://en.wikipedia.org/wiki/Microcontroller)
@@ -56,8 +56,8 @@
 ---
 
 # Implementation Process
-1. Locating correctly working and easily optaineable sensor and development platform
-2. Manufacturing sensor support structure in Fablan using Lasercutter
+1. Locating correctly working and easily obtainable sensor and development platform
+2. Manufacturing sensor support structure in FabLab using a lasercutter
 3. Development of Simulation software and how to input sensor readings to it
 4. Logging sensor readings into text file
 
@@ -68,7 +68,7 @@
 * Arduino script connects to Arduino baseplate (and hence, sensors) and reads sensors
 * Custom Python API uses serial communication to receive sensor data from Arduino
 * Python script connects to API, processes data and sends it to Unreal-based AirSim simulation
-* Airsim provides a Python interface to a virtual drone simulation
+* AirSim provides a Python interface to a virtual drone simulation
 
 ---
 
@@ -90,14 +90,14 @@
 * "drone_control_simulation.py"
 * 3rd party Python libraries AirSimClient, parse (random, sys, getopt, datetime from standard)
 * Uses AirSimClient to communicate with the Unreal process
-* Object oriented approach: select with command line arguments
-    * imported ArduinoSensors: Real time data collecting
+* Object oriented approach: select with command line arguments (none, -f/--fake, -p/--playback <file>)
+    * imported ArduinoSensors.py: Real time data collecting
         * Raises error if unable to connect to sensor array
-    * FakeArduinoSensors: ArduinoSensosrs pseudo-duplicate for synthetic data for testing
+    * FakeArduinoSensors: ArduinoSensors imitation providing synthetic data for testing
         * DroneSensor objects calculate intensity from distance to an imaginary fire -> exponential!
-    * PlaybackArduinoSensors: ArduinoSensor pseudo-duplicate for playback of collected data logs
+    * PlaybackArduinoSensors: ArduinoSensor imitation for playback of collected data logs
 * Raises error if Unreal environment not available
-* Main software loop, run until opposite intensity difference is below threshold
+* Main software loop, run until opposite intensity difference (top-bottom, left-right) is below threshold
     * Create smell direction vectors from sensor intensities
     * Issue appropriate movement commands to virtual drone
     * Read new sensor values, real or fake
@@ -122,7 +122,7 @@
 
 * AirSim ([https://github.com/Microsoft/AirSim](https://github.com/Microsoft/AirSim))
     * Python API library implementation (latest, pre-release)
-    * "Neighbourhood" virtual environment v1.1.6
+    * "Neighbourhood" virtual environment v1.1.6 (required for function)
 
 ---
 
@@ -156,12 +156,14 @@
 
 # References
 
+FIXME
+
 ---
 
 # Contributions
 FIXME
 * Teemu Ikävalko (11h, 26%): General Design and managing tasks
-* Mauri Miettinen (19h, 44%): System design
+* Mauri Miettinen (31h, xx%): Python movement control, simulator functionality assessment
 * Valtteri Erkkilä (32h, xx%): Sensor testing and serial API implementation
 * Arttu Vuosku (4h , 9%): Looking for articles and instructions
 
