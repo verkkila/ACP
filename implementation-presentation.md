@@ -16,12 +16,12 @@
 2. Glossary
 3. Implementation Process
 4. Software Architecture
-6. Hardware Documentation
-7. Third Party Materials
-8. Security and Privacy
-9. Project Risk Assessment
-10. References
-11. Contributions
+5. Hardware Documentation
+6. Third Party Materials
+7. Security and Privacy
+8. Project Risk Assessment
+9. References
+10. Contributions
 
 ---
 
@@ -39,7 +39,7 @@
 
 ---
 
-# Glossary (FIXME: ARE THESE NECESSARY?)
+# Glossary
 
 * Drone
 	* Unmanned remote controlled aerial vehicle (MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy)
