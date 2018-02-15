@@ -155,8 +155,16 @@
 ---
 
 # References
+Definition for a drone: MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy
 
-FIXME
+[Wikipedia Electronic nose](https://en.wikipedia.org/wiki/Electronic_nose)
+
+[Wikipedia Microcontroller](https://en.wikipedia.org/wiki/Microcontroller)
+
+[Wikipedia Sensor](https://en.wikipedia.org/wiki/Sensor)
+
+[Air quality monitor using arduino](https://plot.ly/arduino/air-quality-tutorial/)
+
 
 ---
 
