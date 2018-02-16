@@ -154,8 +154,11 @@
 ---
 
 # References  (Work still on progress here)
+[Arduino Uno](https://store.arduino.cc/usa/arduino-uno-rev3)
+[Base shield V2 (for connection between arduino and sensors)](https://www.seeedstudio.com/Base-Shield-V2-p-1378.html?cPath=98_16)
+[Grove - Gas Sensor MQ2](https://www.seeedstudio.com/Grove-Gas-Sensor%28MQ2%29-p-937.html)
+[MQ-2 Gas Sensor datasheet](https://www.google.fi/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&ved=0ahUKEwijyOary6rZAhUF66QKHSyWCjwQFggtMAE&url=https%3A%2F%2Fwww.mouser.com%2Fds%2F2%2F321%2F605-00008-MQ-2-Datasheet-370464.pdf&usg=AOvVaw1K74YZPB3jOkxLKm4s2Kaa)
 Definition for a drone: MOT Englanti © Kielikone Oy & Gummerus Kustannus Oy
-
 [Wikipedia Electronic nose](https://en.wikipedia.org/wiki/Electronic_nose)
 
 [Wikipedia Microcontroller](https://en.wikipedia.org/wiki/Microcontroller)
@@ -172,5 +175,5 @@ FIXME
 * Teemu Ikävalko (26h, xx%): Sensor support design and construction in fablab, general managing task + powerpoint
 * Mauri Miettinen (31h, xx%): Python movement control, simulator functionality assessment
 * Valtteri Erkkilä (32h, xx%): Sensor testing and serial API implementation
-* Arttu Vuosku (4h , 9%): Looking for articles and instructions
+* Arttu Vuosku (9h , 9%): Planning testing phase
 
