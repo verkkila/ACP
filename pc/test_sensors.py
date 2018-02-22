@@ -40,6 +40,7 @@ def curses_main(stdscr):
             stdscr.addstr(1, 25, "{:.4f}".format(val_left - prev_val_left))
             stdscr.addstr(1, 35, "{:.4f}".format(val_right - prev_val_right))
             stdscr.addstr(2, 30, "{:.4f}".format(val_back - prev_val_back))
+            stdscr.addstr(3, 0, "{}".format(time.strftime("%H:%M:%S", time.localtime())))
             cycle_time = time.clock() - cycle_start
             stdscr.addstr(5, 0, "Cycle time: {:.5f}s (update rate {}s)".format(cycle_time, update_rate))
             logger.info("{}: {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f}".format(time.strftime("%H:%M:%S", time.localtime()), val_front, val_left, val_right, val_back, val_front - prev_val_front, val_left - prev_val_left, val_right - prev_val_right, val_back - prev_val_back))
