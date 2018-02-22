@@ -73,7 +73,7 @@
 
 # Serial communication API (Python)
 
-* ArduinoSensors.py
+*![Block diagram](https://raw.githubusercontent.com/verkkila/ACP/implementation-presentation/arduino_sensor_diagram.png)
 * Handles serial communication with the Arduino:
     * Python sends a byte to the Arduino, which notifies the Arduino to read the sensors (every one of them).
     * The Arduino then sends back an array of sensor data to the Python script.
@@ -149,7 +149,7 @@ Print end result and initiate hover here
 ---
 
 # Hardware Documentation
-![Sensors](https://github.com/verkkila/ACP/blob/implementation-presentation/sensors.png)
+![Sensors](https://raw.githubusercontent.com/verkkila/ACP/implementation-presentation/sensors.png)
 * Arduino UNO 3
 	* Calculates usable values from the sensor readings (which are voltages) and communicates with the computer
 * Grove Base Shield
