@@ -27,7 +27,6 @@ def curses_main(stdscr):
     while True:
         try:
             cycle_start = time.clock()
-            stdscr.clear()
             val_front = sensors.get_front()
             val_left = sensors.get_left()
             val_right = sensors.get_right()
