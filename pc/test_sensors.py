@@ -1,8 +1,13 @@
 import ArduinoSensors
 import time
 import sys
-import curses
 import logging
+import os
+use_curses = True
+try:
+    import curses
+except ImportError:
+    use_curses = False
 
 update_rate = 0.5
 sensors = ArduinoSensors.ArduinoSensors()
@@ -54,6 +59,37 @@ def curses_main(stdscr):
             break
     sensors.close()
 
-logging.basicConfig(filename="logs/log_{}.txt".format(time.strftime("%Y-%m-%d_%H_%M_%S", time.localtime())), level=logging.DEBUG)
+def main():
+    prev_val_front = prev_val_left = prev_val_right = prev_val_back = 0
+    logger.info("FRONT LEFT RIGHT BACK DELTA_FRONT DELTA_LEFT DELTA_RIGHT DELTA_BACK")
+    while True:
+        try:
+            cycle_start = time.clock()
+            val_front = sensors.get_front()
+            val_left = sensors.get_left()
+            val_right = sensors.get_right()
+            val_back = sensors.get_back()
+
+            print("{:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f}".format(val_front, val_left, val_right, val_back, val_front - prev_val_front, val_left - prev_val_left, val_right - prev_val_right, val_back - prev_val_back))
+            logger.info("{}: {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f}".format(time.strftime("%H:%M:%S", time.localtime()), val_front, val_left, val_right, val_back, val_front - prev_val_front, val_left - prev_val_left, val_right - prev_val_right, val_back - prev_val_back))
+            cycle_time = time.clock() - cycle_start
+            prev_val_front = val_front
+            prev_val_left = val_left
+            prev_val_right = val_right
+            prev_val_back = val_back
+            time.sleep(max(update_rate - cycle_time, 0.01))
+        except KeyboardInterrupt:
+            break
+    sensors.close()
+
+
+cwd = os.path.dirname(os.path.realpath(__file__))
+if not os.path.exists(os.path.join(cwd, "logs")):
+    os.mkdir(os.path.join(cwd, "logs"))
+log_path = os.path.join(cwd, "logs", "log_{}.txt".format(time.strftime("%Y-%m-%d_%H_%M_%S", time.localtime())))
+logging.basicConfig(filename=log_path, level=logging.DEBUG)
 init()
-curses.wrapper(curses_main)
+if use_curses:
+    curses.wrapper(curses_main)
+else:
+    main()
