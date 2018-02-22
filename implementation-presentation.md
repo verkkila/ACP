@@ -97,10 +97,55 @@
     * PlaybackArduinoSensors: ArduinoSensor imitation for playback of collected data logs
 * Raises error if Unreal environment not available
 * Main software loop, run until opposite intensity difference (top-bottom, left-right) is below threshold
-    * Create smell direction vectors from sensor intensities
+    * Create smell direction vectors from sensor intensities via vector distances
     * Issue appropriate movement commands to virtual drone
     * Read new sensor values, real or fake
 * On completion, hover over final location
+
+---
+
+# Python Movement Control Code (shortened)
+
+```python
+# This script represents the drone remote controller wih the other components being:
+# 1. A fire_location
+# 2. Four DroneSensors
+# 3. A DroneArduino base plate
+# 4. A MultirotorClient simulating the drone
+```
+
+Miscellaneous variable values defined here
+
+```python
+class DroneSensor: #Simulates a single sensor
+```
+...
+```python
+class FakeArduinoSensors: #Simulates the Arduino object
+```
+...
+```python
+class PlaybackArduinoSensors: #Plays a recorded file
+```
+...
+
+client setup and argument parsing here, store correct class object in variable `arduino`
+
+```python
+a,b,c,d = arduino.get_front(), arduino.get_left(), arduino.get_right(), arduino.get_back()
+while abs(a-d)>INTENSITY_THRESH or abs(b-c)>INTENSITY_THRESH:
+    vx_unscaled = a - d
+    vy_unscaled = c - b
+    scale_factor = math.sqrt(math.pow(vx_unscaled, 2) + math.pow(vy_unscaled, 2)) #normalization
+    
+    client.moveByVelocity(-vx_unscaled/scale_factor*DRONE_VELOCITY, -vy_unscaled/scale_factor*DRONE_VELOCITY, -1*np.sign(FLIGHT_HEIGHT+client.getPosition().z_val), 0.3, DrivetrainType.ForwardOnly)
+    a,b,c,d = arduino.get_front(), arduino.get_left(), arduino.get_right(), arduino.get_back()
+    if mode==1 and random.randint(1,500)==1 and MAX_REPEATS>0:
+        fire_location = Vector3r(100*(random.random() * 2 - 1),100*(random.random() * 2 - 1),1.5)
+        MAX_REPEATS -= 5
+        print("New FIRE", fire_location.x_val, fire_location.y_val)
+```
+print end result and initiate hover here
 
 ---
 
