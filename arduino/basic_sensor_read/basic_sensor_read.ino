@@ -24,7 +24,7 @@ void setup()
   float sensor_averages[4] = {0.f, 0.f, 0.f, 0.f};
   float RS_air[4] = {0.f, 0.f, 0.f, 0.f};
   
-  Serial.begin(9600);
+  Serial.begin(115200);
 
   while (!Serial) {
     ;

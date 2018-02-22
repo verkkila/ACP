@@ -35,7 +35,7 @@ class ArduinoSensors():
             self.__error("Arduino not found!")
             return False
         else:
-            self._serial_port = serial.Serial(port.device, 9600, timeout = 2)
+            self._serial_port = serial.Serial(port.device, 115200, timeout = 0.010)
         self._serial_port.reset_input_buffer()
         self._serial_port.reset_output_buffer()
         self._initialized = True
