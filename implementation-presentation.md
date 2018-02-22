@@ -118,18 +118,17 @@ Miscellaneous variable values defined here
 
 ```python
 class DroneSensor: #Simulates a single sensor
-```
-...
-```python
-class FakeArduinoSensors: #Simulates the Arduino object
-```
-...
-```python
-class PlaybackArduinoSensors: #Plays a recorded file
-```
-...
+    ...
 
-client setup and argument parsing here, store correct class object in variable `arduino`
+class FakeArduinoSensors: #Simulates the Arduino object
+    ...
+
+class PlaybackArduinoSensors: #Plays a recorded file
+    ...
+```
+
+Client setup and argument parsing here, store correct class object in variable `arduino` which can be:
+FakeArduinoSensors, PlaybackArduinoSensors, ArduinoSensors
 
 ```python
 a,b,c,d = arduino.get_front(), arduino.get_left(), arduino.get_right(), arduino.get_back()
@@ -145,7 +144,7 @@ while abs(a-d)>INTENSITY_THRESH or abs(b-c)>INTENSITY_THRESH:
         MAX_REPEATS -= 5
         print("New FIRE", fire_location.x_val, fire_location.y_val)
 ```
-print end result and initiate hover here
+Print end result and initiate hover here
 
 ---
 
