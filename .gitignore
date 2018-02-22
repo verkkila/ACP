@@ -1,3 +1,4 @@
 *.o
 *.exe
 pc/logs
+pc/__pycache__
