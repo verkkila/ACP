@@ -1,0 +1,95 @@
+import ArduinoSensors
+import time
+import sys
+import logging
+import os
+use_curses = True
+try:
+    import curses
+except ImportError:
+    use_curses = False
+
+update_rate = 0.5
+sensors = ArduinoSensors.ArduinoSensors()
+logger = logging.getLogger("arduino")
+
+def init():
+    global update_rate, sensors
+    if not sensors.open():
+        sys.exit()
+    try:
+        update_rate = float(sys.argv[1]) * 0.001
+    except (IndexError, TypeError):
+        logger.debug("Using default refresh rate of {:.0f}ms".format(update_rate * 1000))
+        print("Using default refresh rate of {} ms".format(update_rate * 1000))
+    else:
+        logger.debug("Using refresh rate of {:.0f}ms".format(update_rate * 1000))
+        print("Using refresh rate of {} ms".format(update_rate * 1000))
+
+def curses_main(stdscr):
+    prev_val_front = prev_val_left = prev_val_right = prev_val_back = 0
+    logger.info("FRONT LEFT RIGHT BACK DELTA_FRONT DELTA_LEFT DELTA_RIGHT DELTA_BACK")
+    while True:
+        try:
+            cycle_start = time.clock()
+            val_front = sensors.get_front()
+            val_left = sensors.get_left()
+            val_right = sensors.get_right()
+            val_back = sensors.get_back()
+            stdscr.addstr(0, 5, "{:.4f}".format(val_front))
+            stdscr.addstr(1, 0, "{:.4f}".format(val_left))
+            stdscr.addstr(1, 10, "{:.4f}".format(val_right))
+            stdscr.addstr(2, 5, "{:.4f}".format(val_back))
+
+            stdscr.addstr(0, 30, "{:.4f}".format(val_front - prev_val_front))
+            stdscr.addstr(1, 25, "{:.4f}".format(val_left - prev_val_left))
+            stdscr.addstr(1, 35, "{:.4f}".format(val_right - prev_val_right))
+            stdscr.addstr(2, 30, "{:.4f}".format(val_back - prev_val_back))
+            stdscr.addstr(3, 0, "{}".format(time.strftime("%H:%M:%S", time.localtime())))
+            cycle_time = time.clock() - cycle_start
+            stdscr.addstr(5, 0, "Cycle time: {:.5f}s (update rate {}s)".format(cycle_time, update_rate))
+            logger.info("{}: {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f}".format(time.strftime("%H:%M:%S", time.localtime()), val_front, val_left, val_right, val_back, val_front - prev_val_front, val_left - prev_val_left, val_right - prev_val_right, val_back - prev_val_back))
+            prev_val_front = val_front
+            prev_val_left = val_left
+            prev_val_right = val_right
+            prev_val_back = val_back
+            stdscr.refresh()
+            time.sleep(max(update_rate - cycle_time, 0.01))
+        except KeyboardInterrupt:
+            break
+    sensors.close()
+
+def main():
+    prev_val_front = prev_val_left = prev_val_right = prev_val_back = 0
+    logger.info("FRONT LEFT RIGHT BACK DELTA_FRONT DELTA_LEFT DELTA_RIGHT DELTA_BACK")
+    while True:
+        try:
+            cycle_start = time.clock()
+            val_front = sensors.get_front()
+            val_left = sensors.get_left()
+            val_right = sensors.get_right()
+            val_back = sensors.get_back()
+
+            print("{:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f}".format(val_front, val_left, val_right, val_back, val_front - prev_val_front, val_left - prev_val_left, val_right - prev_val_right, val_back - prev_val_back))
+            logger.info("{}: {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f} {:.4f}".format(time.strftime("%H:%M:%S", time.localtime()), val_front, val_left, val_right, val_back, val_front - prev_val_front, val_left - prev_val_left, val_right - prev_val_right, val_back - prev_val_back))
+            cycle_time = time.clock() - cycle_start
+            prev_val_front = val_front
+            prev_val_left = val_left
+            prev_val_right = val_right
+            prev_val_back = val_back
+            time.sleep(max(update_rate - cycle_time, 0.01))
+        except KeyboardInterrupt:
+            break
+    sensors.close()
+
+
+cwd = os.path.dirname(os.path.realpath(__file__))
+if not os.path.exists(os.path.join(cwd, "logs")):
+    os.mkdir(os.path.join(cwd, "logs"))
+log_path = os.path.join(cwd, "logs", "log_{}.txt".format(time.strftime("%Y-%m-%d_%H_%M_%S", time.localtime())))
+logging.basicConfig(filename=log_path, level=logging.DEBUG)
+init()
+if use_curses:
+    curses.wrapper(curses_main)
+else:
+    main()
